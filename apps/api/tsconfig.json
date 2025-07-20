@@ -6,8 +6,12 @@
     "paths": {
       "db": ["../../packages/db/src/index.ts"],
       "db/*": ["../../packages/db/src/*"]
-    }
+    },
+    "typeRoots": [
+      "./node_modules/@types",
+      "./types.d.ts" // Explicitly include types.d.ts
+    ]
   },
-  "include": ["./**/*.ts", "./**/*.tsx"],
+  "include": ["./**/*.ts", "./**/*.tsx", "./**/*.d.ts"],
   "exclude": ["node_modules", "dist"]
 } 
