@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState, useMemo } from "react";
 import { ChevronDown, ChevronUp, Globe, Plus, Moon, Sun } from "lucide-react";
 import { useWebsites } from "@/hooks/useWebsites";
@@ -40,7 +41,7 @@ function CreateWebsiteModal({
   onClose,
 }: {
   isOpen: boolean;
-  onClose: (url: string | null) => void;
+  onClose: (url: string) => void;
 }) {
   const [url, setUrl] = useState("");
   if (!isOpen) return null;
@@ -51,34 +52,35 @@ function CreateWebsiteModal({
         <h2 className="text-xl font-semibold mb-4 dark:text-white">
           Add New Website
         </h2>
-        <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-            URL
-          </label>
-          <input
-            type="url"
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
-            placeholder="https://example.com"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-          />
-        </div>
-        <div className="flex justify-end space-x-3 mt-6">
-          <button
-            type="button"
-            onClick={() => onClose(null)}
-            className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md"
-          >
-            Cancel
-          </button>
-          <button
-            type="submit"
-            onClick={() => onClose(url)}
-            className="px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-md"
-          >
-            Add Website
-          </button>
-        </div>
+        <form className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              URL
+            </label>
+            <input
+              type="url"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+              placeholder="https://example.com"
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+            />
+          </div>
+          <div className="flex justify-end space-x-3 mt-6">
+            <button
+              type="button"
+              onClick={() => onClose(url)}
+              className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-md"
+            >
+              Add Website
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

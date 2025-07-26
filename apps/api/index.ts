@@ -2,12 +2,16 @@
 import express, { Request, Response } from "express";
 import authMiddleware  from "./middleware";
 import { prismaClient } from 'db'
+import cors from 'cors';
+
+
 
 interface AuthRequest extends Request {
     userId?: string;
-  }
+}
 
 const app = express();
+app.use(cors());
 
 app.use(express.json());
 
